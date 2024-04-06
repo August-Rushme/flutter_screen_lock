@@ -4,7 +4,7 @@ This Flutter plugin provides an feature for screen lock.
 Enter your passcode to unlock the screen.
 You can also use biometric authentication as an option.
 
-<img src="https://raw.githubusercontent.com/naoki0719/flutter_screen_lock/master/resources/flutter_screen_lock_v3.gif" />
+<img src="https://raw.githubusercontent.com/naoki0719/flutter_screen_lock_august/master/resources/flutter_screen_lock_august_v3.gif" />
 
 ## Features
 
@@ -28,7 +28,7 @@ To unlock, enter correctString.
 If the passcode the user entered matches, `onUnlocked` is called.
 
 ```dart
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 
 showLockScreen(
   context: context,
@@ -42,7 +42,7 @@ showLockScreen(
 Digits will be adjusted to the length of `correctString`.
 
 ```dart
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 
 lockScreen(
   context: context,
@@ -53,7 +53,7 @@ lockScreen(
 When creating a PIN, you can specify the amount:
 
 ```dart
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 
 lockScreenCreate(
   context: context,
@@ -62,7 +62,6 @@ lockScreenCreate(
 );
 ```
 
-
 ### Use local_auth
 
 Add the [local_auth](https://pub.dev/packages/local_auth) package to pubspec.yml.
@@ -70,7 +69,7 @@ Add the [local_auth](https://pub.dev/packages/local_auth) package to pubspec.yml
 It includes an example that calls biometrics as soon as screenLock is displayed in `didOpened`.
 
 ```dart
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -124,7 +123,7 @@ Will let user enter a new passcode and confirm it.
 You have to store the passcode somewhere manually.
 
 ```dart
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 
 screenLockCreate(
   context: context,

@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 import 'package:local_auth/local_auth.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(MyApp() as Widget);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -59,22 +59,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 alignment: WrapAlignment.start,
                 children: [
                   ElevatedButton(
-                    onPressed: () => showDialog<void>(
+                    onPressed: () => screenLock(
                       context: context,
-                      builder: (context) {
-                        return ScreenLock(
-                          correctString: '1234',
-                          onCancelled: Navigator.of(context).pop,
-                          onUnlocked: Navigator.of(context).pop,
-                        );
+                      correctString: '236473256747512328073216783',
+                      canCancel: false,
+                      okButton: const Text(
+                        'OK',
+                        textAlign: TextAlign.center,
+                      ),
+                      onOkButtonPressed: (input) async {
+                        // 实现您的验证逻辑
+
+                        return true; // 根据您的验证逻辑返回true或false
                       },
                     ),
-                    child: const Text('Manually open'),
+                    child: const Text('TEST'),
                   ),
                   ElevatedButton(
                     onPressed: () => screenLock(
                       context: context,
-                      correctString: '1234',
+                      correctString: '236473256747512328073216783',
                       canCancel: false,
                     ),
                     child: const Text('Not cancelable'),
@@ -102,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ElevatedButton(
                     onPressed: () => screenLock(
                       context: context,
-                      correctString: '1234',
+                      correctString: '236473256747512328073216783',
                       customizedButtonChild: const Icon(
                         Icons.fingerprint,
                       ),
@@ -117,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ElevatedButton(
                     onPressed: () => screenLock(
                       context: context,
-                      correctString: '123456',
+                      correctString: '7325674751232807321678356',
                       canCancel: false,
                       footer: Container(
                         width: 68,
@@ -207,7 +211,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ElevatedButton(
                     onPressed: () => screenLock(
                       context: context,
-                      correctString: '1234',
+                      correctString: '236473256747512328073216783',
                       onUnlocked: () {
                         Navigator.pop(context);
                         NextPage.show(context);
@@ -218,7 +222,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ElevatedButton(
                     onPressed: () => screenLock(
                       context: context,
-                      correctString: '1234',
+                      correctString: '236473256747512328073216783',
                       useBlur: false,
                       config: const ScreenLockConfig(
                         /// If you don't want it to be transparent, override the config
@@ -231,7 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ElevatedButton(
                     onPressed: () => screenLock(
                       context: context,
-                      correctString: '1234',
+                      correctString: '236473256747512328073216783',
                       maxRetries: 2,
                       retryDelay: const Duration(seconds: 3),
                       delayBuilder: (context, delay) => Text(
@@ -244,7 +248,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () => showDialog<void>(
                       context: context,
                       builder: (context) => ScreenLock(
-                        correctString: '1234',
+                        correctString: '236473256747512328073216783',
                         keyPadConfig: const KeyPadConfig(
                           clearOnLongPressed: true,
                         ),
@@ -257,7 +261,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () => showDialog<void>(
                       context: context,
                       builder: (context) => ScreenLock(
-                        correctString: '1234',
+                        correctString: '236473256747512328073216783',
                         secretsBuilder: (
                           context,
                           config,
@@ -279,7 +283,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ElevatedButton(
                     onPressed: () => screenLock(
                       context: context,
-                      correctString: '1234',
+                      correctString: '236473256747512328073216783',
                       useLandscape: false,
                     ),
                     child: const Text('Disable landscape mode'),
@@ -290,7 +294,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       correctString: 'x' * 4,
                       onValidate: (value) async => await Future<bool>.delayed(
                         const Duration(milliseconds: 500),
-                        () => value == '1234',
+                        () => value == '236473256747512328073216783',
                       ),
                     ),
                     child: const Text('Callback validation'),

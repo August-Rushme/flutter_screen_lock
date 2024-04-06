@@ -2,20 +2,20 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_lock/src/configurations/secret_config.dart';
-import 'package:flutter_screen_lock/src/configurations/secrets_config.dart';
+import 'package:flutter_screen_lock_august/src/configurations/secret_config.dart';
+import 'package:flutter_screen_lock_august/src/configurations/secrets_config.dart';
 
 class SecretsWithShakingAnimation extends StatefulWidget {
   const SecretsWithShakingAnimation({
     super.key,
     required this.config,
-    required this.length,
+    this.length,
     required this.input,
     required this.verifyStream,
   });
 
   final SecretsConfig config;
-  final int length;
+  final int? length;
   final ValueListenable<String> input;
   final Stream<bool> verifyStream;
 
@@ -85,45 +85,41 @@ class Secrets extends StatefulWidget {
     super.key,
     SecretsConfig? config,
     required this.input,
-    required this.length,
+    this.length,
   }) : config = config ?? const SecretsConfig();
 
   final SecretsConfig config;
   final ValueListenable<String> input;
-  final int length;
+  final int? length;
 
   @override
   State<Secrets> createState() => _SecretsState();
 }
 
-class _SecretsState extends State<Secrets> with SingleTickerProviderStateMixin {
+class _SecretsState extends State<Secrets> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<String>(
       valueListenable: widget.input,
-      builder: (context, value, child) => Padding(
-        padding: widget.config.padding,
-        child: Wrap(
-          spacing: widget.config.spacing,
-          children: List.generate(
-            widget.length,
-            (index) {
-              if (value.isEmpty) {
-                return Secret(
-                  config: widget.config.secretConfig,
-                  enabled: false,
-                );
-              }
+      builder: (context, value, child) {
+        // 计算输入值的长度
+        final int inputLength = value.length;
 
-              return Secret(
+        return Padding(
+          padding: widget.config.padding,
+          child: Wrap(
+            spacing: widget.config.spacing,
+            children: List.generate(
+              inputLength, // 使用用户输入的长度
+              (index) => Secret(
                 config: widget.config.secretConfig,
-                enabled: index < value.length,
-              );
-            },
-            growable: false,
+                enabled: true, // 由于所有的秘密字符都是用户输入的，因此都标记为启用
+              ),
+              growable: false,
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

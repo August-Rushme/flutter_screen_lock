@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
-import 'package:flutter_screen_lock/src/layout/key_pad_button.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
+import 'package:flutter_screen_lock_august/src/layout/key_pad_button.dart';
 
 /// [GridView] or [Wrap] make it difficult to specify the item size intuitively.
 /// We therefore arrange them manually with [Column]s and [Row]s
@@ -15,8 +15,11 @@ class KeyPad extends StatelessWidget {
     this.customizedButtonTap,
     this.deleteButton,
     this.cancelButton,
+    this.okButton, // 新添加的参数
+    this.onOkButtonPressed, // 新添加的参数
   }) : config = config ?? const KeyPadConfig();
-
+  final Widget? okButton;
+  final Future<bool> Function(String input)? onOkButtonPressed;
   final InputController inputState;
   final VoidCallback? didCancelled;
   final bool enabled;
@@ -28,6 +31,35 @@ class KeyPad extends StatelessWidget {
 
   KeyPadButtonConfig get actionButtonConfig =>
       config.actionButtonConfig ?? const KeyPadButtonConfig(fontSize: 18);
+  Widget _buildOkButton() {
+    // 如果没有提供 okButton 和 onOkButtonPressed，则显示隐藏的按钮
+    if (okButton == null || onOkButtonPressed == null) {
+      return _buildHiddenButton();
+    }
+
+    return KeyPadButton.transparent(
+      onPressed: enabled
+          ? () async {
+              // 获取当前输入的密码
+              String currentInput = inputState.currentInput.value;
+              // 调用 onOkButtonPressed 回调，并传递当前输入
+              bool validationResult = await onOkButtonPressed!(currentInput);
+              // 根据 validationResult 可以进一步处理，例如显示提示或者关闭屏幕锁
+              if (validationResult) {
+                // 可以在这里添加验证成功后的逻辑
+              } else {
+                // 可以在这里添加验证失败后的逻辑
+              }
+            }
+          : null,
+      config: actionButtonConfig,
+      child: okButton ??
+          const Text(
+            'OK',
+            textAlign: TextAlign.center,
+          ),
+    );
+  }
 
   Widget _buildDeleteButton() {
     return KeyPadButton.transparent(
@@ -111,7 +143,7 @@ class KeyPad extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _buildLeftSideButton(),
+        _buildOkButton(),
         KeyPadButton(
           config: config.buttonConfig,
           onPressed: enabled ? () => inputState.addCharacter(input) : null,
@@ -124,8 +156,8 @@ class KeyPad extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    assert(config.displayStrings.length == 10);
-    assert(config.inputStrings.length == 10);
+    assert(config.displayStrings.length == 11);
+    assert(config.inputStrings.length == 11);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,

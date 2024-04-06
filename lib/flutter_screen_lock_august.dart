@@ -1,4 +1,4 @@
-library flutter_screen_lock;
+library flutter_screen_lock_august;
 
 export 'src/configurations/key_pad_button_config.dart';
 export 'src/configurations/key_pad_config.dart';

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 
 class InputController {
   InputController();
@@ -113,6 +113,7 @@ class InputController {
     required int digits,
     required String? correctString,
     ValidationCallback? onValidate,
+    ValidationCallback? onOkButtonPressed,
   }) {
     _inputValueNotifier = ValueNotifier<String>('');
     _verifyController = StreamController.broadcast();

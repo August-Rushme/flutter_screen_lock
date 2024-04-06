@@ -1,4 +1,14 @@
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+/*
+ * @Author: August_rush
+ * @Date: 2024-03-27 11:30:56
+ * @LastEditors: August_rush 864011713@qq.com
+ * @LastEditTime: 2024-04-06 15:41:43
+ * @FilePath: \flutter_screen_lock_august\lib\src\configurations\key_pad_config.dart
+ * @Description: 
+ * 
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved. 
+ */
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 
 class KeyPadConfig {
   const KeyPadConfig({
@@ -37,6 +47,7 @@ class KeyPadConfig {
     '7',
     '8',
     '9',
+    'OK',
   ];
 
   /// Copies a [KeyPadConfig] with new values.

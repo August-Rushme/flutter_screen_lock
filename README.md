@@ -4,11 +4,11 @@ This Flutter plugin provides an feature for screen lock.
 Enter your passcode to unlock the screen.
 You can also use biometric authentication as an option.
 
-<img src="https://raw.githubusercontent.com/naoki0719/flutter_screen_lock/master/resources/flutter_screen_lock_v3.gif" />
+<img src="https://raw.githubusercontent.com/naoki0719/flutter_screen_lock_august/master/resources/flutter_screen_lock_august_v3.gif" />
 
 ## Landscape view
 
-<img src="https://raw.githubusercontent.com/naoki0719/flutter_screen_lock/master/resources/landscape.png" />
+<img src="https://raw.githubusercontent.com/naoki0719/flutter_screen_lock_august/master/resources/landscape.png" />
 
 ## Features
 
@@ -32,7 +32,7 @@ To unlock, enter correctString.
 If you give the same input as correctString, it will automatically close the screen.
 
 ```dart
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 
 screenLock(
   context: context,
@@ -45,7 +45,7 @@ screenLock(
 Provides a screen lock that cannot be cancelled.
 
 ```dart
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 
 screenLock(
   context: context,
@@ -59,7 +59,7 @@ screenLock(
 You can have users create a new passcode with confirmation
 
 ```dart
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 
 screenLockCreate(
   context: context,
@@ -70,7 +70,7 @@ screenLockCreate(
 ### Control the creation state
 
 ```dart
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 
 final inputController = InputController();
 
@@ -90,7 +90,7 @@ Add the [local_auth](https://pub.dev/packages/local_auth) package to pubspec.yml
 It includes an example that calls biometrics as soon as screenLock is displayed in `didOpened`.
 
 ```dart
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -119,7 +119,7 @@ Here is an example:
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 
 screenLockCreate(
   context: context,
@@ -189,7 +189,7 @@ screenLockCreate(
 );
 ```
 
-<img src="https://raw.githubusercontent.com/naoki0719/flutter_screen_lock/master/resources/customize_styles_v3.png" />
+<img src="https://raw.githubusercontent.com/naoki0719/flutter_screen_lock_august/master/resources/customize_styles_v3.png" />
 
 ## Version migration
 
@@ -204,7 +204,7 @@ screenLockCreate(
 - Change `screenLock` with `confirm: true` to `screenLockCreate`
 - Change `ScreenLock` with `confirm: true` to `ScreenLock.create`
 - Replace `StyledInputConfig` with `KeyPadButtonConfig`
-- Replace `spacingRatio` with fixed value `spacing` in `Secrets` 
+- Replace `spacingRatio` with fixed value `spacing` in `Secrets`
 
 ### 6.x to 7 migration
 
@@ -216,8 +216,8 @@ screenLockCreate(
 
 ### 5.x to 6 migration
 
-- `ScreenLock` does not use `Navigator.pop` internally anymore.   
-  The developer should now pop by themselves when desired.   
+- `ScreenLock` does not use `Navigator.pop` internally anymore.  
+  The developer should now pop by themselves when desired.  
   `screenLock` call will pop automatically if `onUnlocked` is `null`.
 
 ### 4.x to 5 migration
@@ -225,13 +225,13 @@ screenLockCreate(
 Import name has changed from:
 
 ```dart
-import 'package:flutter_screen_lock/functions.dart';
+import 'package:flutter_screen_lock_august/functions.dart';
 ```
 
 to
 
 ```dart
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
 ```
 
 ## Apps that use this library

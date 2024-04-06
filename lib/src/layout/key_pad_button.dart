@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_lock/src/configurations/key_pad_button_config.dart';
+import 'package:flutter_screen_lock_august/src/configurations/key_pad_button_config.dart';
 
 /// Button in a [KeyPad].
 class KeyPadButton extends StatelessWidget {

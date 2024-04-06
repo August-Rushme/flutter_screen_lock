@@ -3,8 +3,8 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
-import 'package:flutter_screen_lock/src/layout/key_pad.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
+import 'package:flutter_screen_lock_august/src/layout/key_pad.dart';
 
 class ScreenLock extends StatefulWidget {
   /// Animated ScreenLock
@@ -14,6 +14,7 @@ class ScreenLock extends StatefulWidget {
     required VoidCallback this.onUnlocked,
     this.onOpened,
     this.onValidate,
+    this.onOkButtonPressed,
     this.onCancelled,
     this.onError,
     this.onMaxRetries,
@@ -27,6 +28,7 @@ class ScreenLock extends StatefulWidget {
     this.customizedButtonChild,
     this.customizedButtonTap,
     this.footer,
+    this.okButton,
     this.cancelButton,
     this.deleteButton,
     this.inputController,
@@ -47,11 +49,12 @@ class ScreenLock extends StatefulWidget {
     required ValueChanged<String> this.onConfirmed,
     this.onOpened,
     this.onValidate,
+    this.onOkButtonPressed,
     this.onCancelled,
     this.onError,
     this.onMaxRetries,
     this.maxRetries = 0,
-    this.digits = 4,
+    this.digits = 50,
     this.retryDelay = Duration.zero,
     Widget? title,
     Widget? confirmTitle,
@@ -62,6 +65,7 @@ class ScreenLock extends StatefulWidget {
     this.customizedButtonChild,
     this.customizedButtonTap,
     this.footer,
+    this.okButton,
     this.cancelButton,
     this.deleteButton,
     this.inputController,
@@ -86,6 +90,8 @@ class ScreenLock extends StatefulWidget {
   ///
   /// If `true` is returned, the lock is unlocked.
   final ValidationCallback? onValidate;
+
+  final ValidationCallback? onOkButtonPressed;
 
   /// Called when the screen is shown the first time.
   ///
@@ -145,6 +151,8 @@ class ScreenLock extends StatefulWidget {
   /// Footer widget.
   final Widget? footer;
 
+  final Widget? okButton;
+
   /// Cancel button widget.
   final Widget? cancelButton;
 
@@ -187,6 +195,7 @@ class _ScreenLockState extends State<ScreenLock> {
       correctString: widget.correctString,
       digits: widget.digits,
       onValidate: widget.onValidate,
+      onOkButtonPressed: widget.onOkButtonPressed,
     );
 
     inputController.verifyInput.listen((success) {
@@ -362,6 +371,8 @@ class _ScreenLockState extends State<ScreenLock> {
           customizedButtonChild: widget.customizedButtonChild,
           deleteButton: widget.deleteButton,
           cancelButton: widget.cancelButton,
+          okButton: widget.okButton,
+          onOkButtonPressed: widget.onOkButtonPressed,
         ),
       );
     }

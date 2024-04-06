@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
-import 'package:flutter_screen_lock/src/layout/key_pad.dart';
+import 'package:flutter_screen_lock_august/flutter_screen_lock_august.dart';
+import 'package:flutter_screen_lock_august/src/layout/key_pad.dart';
 
 /// Animated ScreenLock
 ///
@@ -34,6 +34,7 @@ Future<void> screenLock({
   VoidCallback? onUnlocked,
   VoidCallback? onOpened,
   ValidationCallback? onValidate,
+  ValidationCallback? onOkButtonPressed,
   VoidCallback? onCancelled,
   ValueChanged<int>? onError,
   ValueChanged<int>? onMaxRetries,
@@ -49,6 +50,7 @@ Future<void> screenLock({
   Widget? footer,
   Widget? cancelButton,
   Widget? deleteButton,
+  Widget? okButton,
   InputController? inputController,
   SecretsBuilderCallback? secretsBuilder,
   bool useBlur = true,
@@ -67,6 +69,7 @@ Future<void> screenLock({
           onUnlocked: onUnlocked ?? Navigator.of(context).pop,
           onOpened: onOpened,
           onValidate: onValidate,
+          onOkButtonPressed: onOkButtonPressed,
           onCancelled:
               canCancel ? onCancelled ?? Navigator.of(context).pop : null,
           onError: onError,
@@ -82,6 +85,7 @@ Future<void> screenLock({
           customizedButtonTap: customizedButtonTap,
           footer: footer,
           cancelButton: cancelButton,
+          okButton: okButton,
           deleteButton: deleteButton,
           inputController: inputController,
           secretsBuilder: secretsBuilder,
@@ -139,6 +143,7 @@ Future<void> screenLockCreate({
   required ValueChanged<String> onConfirmed,
   VoidCallback? onOpened,
   ValidationCallback? onValidate,
+  ValidationCallback? onOkButtonPressed,
   VoidCallback? onCancelled,
   ValueChanged<int>? onError,
   ValueChanged<int>? onMaxRetries,
@@ -155,6 +160,7 @@ Future<void> screenLockCreate({
   VoidCallback? customizedButtonTap,
   Widget? footer,
   Widget? cancelButton,
+  Widget? okButton,
   Widget? deleteButton,
   InputController? inputController,
   SecretsBuilderCallback? secretsBuilder,
@@ -173,6 +179,7 @@ Future<void> screenLockCreate({
           onConfirmed: onConfirmed,
           onOpened: onOpened,
           onValidate: onValidate,
+          onOkButtonPressed: onOkButtonPressed,
           onCancelled:
               canCancel ? onCancelled ?? Navigator.of(context).pop : null,
           onError: onError,
@@ -190,6 +197,7 @@ Future<void> screenLockCreate({
           customizedButtonTap: customizedButtonTap,
           footer: footer,
           cancelButton: cancelButton,
+          okButton: okButton,
           deleteButton: deleteButton,
           inputController: inputController,
           secretsBuilder: secretsBuilder,
